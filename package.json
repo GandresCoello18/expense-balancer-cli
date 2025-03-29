@@ -1,0 +1,53 @@
+{
+  "name": "tinkin",
+  "version": "1.0.0",
+  "description": "Back-end technical testing",
+  "main": "index.js",
+  "engines": {
+    "yarn": "1.22.19",
+    "node": "20.19.0"
+  },
+  "scripts": {
+    "clean:modules": "rm -rf ./node_modules",
+    "clean": "rm -rf ./build",
+    "prepare:husky": "husky install",
+    "prebuild": "yarn clean",
+    "build": "tsc",
+    "start": "ts-node-dev -r tsconfig-paths/register src/index.ts",
+    "format:fix": "prettier --write \"src/**/*.ts\" --write \"package.json\"",
+    "format:check": "prettier --check \"src/**/*.ts\" --check \"package.json\"",
+    "lint:fix": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+    "test:unit": "jest src/__tests__ --detectOpenHandles",
+    "test:watch": "yarn test:unit --watch",
+    "test:coverage": "yarn test:unit --coverage",
+    "test:dependecy": "snyk test"
+  },
+  "keywords": [
+    "number",
+    "script",
+    "server",
+    "calculator"
+  ],
+  "author": "Andres coello goyes",
+  "license": "ISC",
+  "devDependencies": {
+    "@commitlint/config-conventional": "^19.8.0",
+    "@types/jest": "^29.5.14",
+    "@typescript-eslint/parser": "^8.28.0",
+    "eslint": "^9.23.0",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-prettier": "^5.2.5",
+    "jest": "^29.7.0",
+    "prettier": "^3.5.3",
+    "snyk": "^1.1296.1",
+    "ts-jest": "^29.3.0",
+    "ts-node-dev": "^2.0.0",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.8.2",
+    "typescript-eslint": "^8.28.0"
+  },
+  "dependencies": {
+    "console-log-colors": "^0.5.0"
+  }
+}
