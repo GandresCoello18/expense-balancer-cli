@@ -8,7 +8,7 @@ function main() {
     readInputFromFile(filePath);
   } else {
     log.red(' 🚧 Nota: para cancelar el proceso usa ctrl + d o ctrl + c 🚧 ');
-    log.green(' 🚀 Introduce acontinuación los valores a calcular...');
+    log.green(' 🚀 Acontinuación responde las preguntas e ingresa los valores a calcular...');
     readInputFromConsole();
   }
 }

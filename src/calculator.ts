@@ -1,10 +1,17 @@
-import { calculateAverage } from './shared/helpers/calculator.helper';
-import { CENTS_IN_DOLLAR } from './shared/utils/time.util';
+import {
+  calculateAverage,
+  validateMaxMembersAllowed,
+  validateRangeValueAllowedByTrip,
+} from './shared/helpers/calculator.helper';
+import { CENTS_IN_DOLLAR } from './shared/utils/coin.util';
 
 export const calculateMinimumExchange = (trips: number[][]) => {
   const results = [];
 
   for (const trip of trips) {
+    validateMaxMembersAllowed({ count: trip.length });
+    validateRangeValueAllowedByTrip({ trip });
+
     const expenses = trip.map(expense => Math.round(expense * CENTS_IN_DOLLAR));
     const total = expenses.reduce((acc, exp) => acc + exp, 0);
     const average = calculateAverage({ total, count: expenses.length });
