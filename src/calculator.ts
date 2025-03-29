@@ -1,5 +1,5 @@
-import { calculateAverage } from '@/shared/helpers/calculator.helper';
-import { CENTS_IN_DOLLAR } from '@/shared/utils/time.util';
+import { calculateAverage } from './shared/helpers/calculator.helper';
+import { CENTS_IN_DOLLAR } from './shared/utils/time.util';
 
 export const calculateMinimumExchange = (trips: number[][]) => {
   const results = [];

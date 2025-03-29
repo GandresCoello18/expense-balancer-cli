@@ -1,7 +1,8 @@
-import { readInputFromFile, readInputFromConsole } from './io';
-import { log, cyan } from 'console-log-colors';
+import { log } from 'console-log-colors';
 
-async function main() {
+import { readInputFromFile, readInputFromConsole } from './io';
+
+function main() {
   if (process.argv.length > 2) {
     const filePath = process.argv[2];
     readInputFromFile(filePath);
@@ -12,6 +13,7 @@ async function main() {
   }
 }
 
-main().catch(error => {
-  cyan.bgRed.bold.underline(` 😱 Server error: ${error.message}`);
-});
+(() => {
+  log.greenBright(` 😎 App corriendo..!`);
+  main();
+})();

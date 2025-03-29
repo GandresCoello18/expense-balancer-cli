@@ -1,16 +1,17 @@
 {
   "compilerOptions": {
-    "target": "es2017",
+    "target": "esnext",
     "module": "commonjs",
-    "strict": true,
     "outDir": "./dist",
-    "esModuleInterop": true,
     "baseUrl": "./src",
     "paths": {
-      "@/*": ["*"]
-    }
+      "@/*": ["./*"]
+    },
+    "strict": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "dist"]
 }
   
