@@ -6,9 +6,20 @@ import { log } from 'console-log-colors';
 import { calculateMinimumExchange } from './calculator';
 import { parseInput } from './shared/helpers/io.helper';
 
-export const readInputFromFile = (filePath: string): number[][] => {
-  const content = fs.readFileSync(filePath, 'utf-8');
-  return parseInput(content);
+export const readInputFromFile = (filePath: string) => {
+  try {
+    const content = fs.readFileSync(filePath, 'utf-8');
+    const trips = parseInput(content);
+    const results = calculateMinimumExchange(trips);
+    log.green('\nResultados: 👇 ');
+    results.forEach((result, index) => {
+      console.log(` ✈️  Viaje #${index + 1}: $${result} 💰 `);
+    });
+  } catch (error) {
+    if (error instanceof Error) {
+      log.red(`Error file: ${error.message}`);
+    }
+  }
 };
 
 export const readInputFromConsole = () => {
