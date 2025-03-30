@@ -1,7 +1,10 @@
 # 🎷 The Ecuadorian Big Big Band - Expense Splitter 💰
 ![Logo](https://cdn.prod.website-files.com/63cad8453a048d41ee9ce6bb/63cad8453a048da4c09ce7f3_logo.svg)
 
-Este proyecto resuelve el problema de dividir equitativamente los gastos de viaje de los miembros de una banda de jazz/bachata en Ecuador. Utiliza **TypeScript** con **TDD** y sigue buenas prácticas de código.  
+Este proyecto resuelve el problema de dividir equitativamente los gastos de viaje de los miembros de una banda de jazz/bachata en Ecuador. Utiliza **TypeScript** con **TDD** y sigue buenas prácticas de código.
+
+> [!NOTE]
+> Usar versiones de yarn y node estables para correr esta app, las versiones recomendadas se encuentran en la seccion de engines del package.json
 
 ---
 
@@ -29,20 +32,123 @@ Este proyecto resuelve el problema de dividir equitativamente los gastos de viaj
      ┣ 📂 utils # Funciones de utilidad genéricas
    ┣ 📜 index.ts # Punto de entrada principal
 ```
-
 ---
+
+## 📌 Iniciando
 
 ### 1️⃣ Clonar el repositorio  
 
 ```sh
 git clone https://github.com/GandresCoello18/back-challenge-tinkin.git
-cd tu-repo
+cd back-challenge-tinkin
 ```
 
-## 🛠 Instalación y Configuración
+### 2️⃣ Instalar dependencias
 
 ```bash
   yarn install
+```
+
+### 3️⃣ Ejecutar en modo desarrollo
+
+```bash
+  yarn dev
+```
+
+### 4️⃣ Compilar para producción
+
+```bash
+  yarn build
+```
+
+### 5️⃣ Ejecutar en producción
+
+```bash
+  yarn start
+```
+
+## 🧪 Pruebas
+Ejecutar las pruebas con Jest:
+
+Pruebas unitarias
+```bash
+  yarn test:unit
+```
+
+Pruebas unitarias y coverage
+```bash
+  yarn test:coverage
+```
+
+## ⚙️ Script de desarollo
+
+Formatear codigo
+```bash
+  yarn format:fix
+```
+
+Análisis y patrones de error en codigo
+```bash
+  yarn lint:fix
+```
+
+## 📌 Uso
+Puedes ingresar los datos de forma interactiva o desde un archivo de texto.
+
+### 🔹 Entrada de datos manual
+
+Puedes usar dev para desarrollo o start para producción
+```bash
+  yarn dev o yarn start
+```
+
+Luego, ingresa:
+```bash
+  3
+  100.01
+  99.99
+  99.99
+  0
+```
+
+### 📷 Ejemplo:
+![Proceso manual](https://firebasestorage.googleapis.com/v0/b/meniuz.appspot.com/o/tinkin%2Fmanual.png?alt=media)
+
+### 🔹 Usando un archivo de entrada
+
+Puedes usar dev para desarrollo o start para producción
+```bash
+  yarn dev o yarn start
+```
+
+```bash
+  yarn start src/inputs/example.txt
+```
+
+### 📷 Ejemplo:
+![Proceso por archivo](https://firebasestorage.googleapis.com/v0/b/meniuz.appspot.com/o/tinkin%2Fautomati.png?alt=media)
+
+### 🔒 Validaciones Implementadas
+
+```bash
+✔️ Máximo 100 miembros por viaje.
+✔️ Gasto máximo de $1000 por persona.
+✔️ Se buscan valores incorrectos (ej. "$99y.66").
+✔️ La cantidad de miembros debe especificarse antes de los gastos.
+✔️ Se finaliza la entrada de datos al ingresar 0.
+```
+
+### 📌 Ejemplo de Salida
+
+```bash
+📊 Resultados:  
+-----------------------------
+✈️  Viaje #1: $10.00 💰  
+✈️  Viaje #2: $11.99 💰  
+✈️  Viaje #3: $11.99 💰  
+✈️  Viaje #4: $0.07 💰  
+✈️  Viaje #5: $0.00 💰  
+-----------------------------
 ```
 
 ## Construido con 🛠️
