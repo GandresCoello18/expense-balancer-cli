@@ -1,5 +1,5 @@
 # 🎷 The Ecuadorian Big Big Band - Expense Splitter 💰
-![Logo](https://cdn.prod.website-files.com/6112ca9c002c6da88706b3c1/61423cecaccb589b9bdd3613_Group%20625728.svg)
+![Logo](https://cdn.prod.website-files.com/63cad8453a048d41ee9ce6bb/63cad8453a048da4c09ce7f3_logo.svg)
 
 Este proyecto resuelve el problema de dividir equitativamente los gastos de viaje de los miembros de una banda de jazz/bachata en Ecuador. Utiliza **TypeScript** con **TDD** y sigue buenas prácticas de código.  
 
@@ -18,6 +18,7 @@ Este proyecto resuelve el problema de dividir equitativamente los gastos de viaj
 
 ## 📂 Estructura del Proyecto  
 
+```sh
 📦 src
    ┣ 📂 __tests__ # Pruebas unitarias (TDD)
    ┣ 📂 inputs # Archivos de prueba con datos de entrada
@@ -26,18 +27,23 @@ Este proyecto resuelve el problema de dividir equitativamente los gastos de viaj
    ┣ 📂 shared
      ┣ 📂 helpers # Funciones auxiliares reutilizables
      ┣ 📂 utils # Funciones de utilidad genéricas
-     ┣ 📜 index.ts # Punto de entrada principal
-
+   ┣ 📜 index.ts # Punto de entrada principal
+```
 
 ---
-
-## 🛠 Instalación y Configuración  
 
 ### 1️⃣ Clonar el repositorio  
 
 ```sh
-git clone https://github.com/tu-usuario/tu-repo.git
+git clone https://github.com/GandresCoello18/back-challenge-tinkin.git
 cd tu-repo
+```
+
+## 🛠 Instalación y Configuración
+
+```bash
+  yarn install
+```
 
 ## Construido con 🛠️
 
@@ -49,6 +55,7 @@ _Para el desarrollo de esta app se utilizo las siguientes herramientas._
 - [ESLint](https://eslint.org/) - Herramienta de análisis de código estático para identificar patrones problemáticos que se encuentran en el código JavaScript.
 - [commitlint](https://commitlint.js.org/) - Ayuda a su equipo a adherirse a una convención de confirmación.
 - [Jest](https://jestjs.io/) - Jest es un encantador marco de pruebas de JavaScript centrado en la simplicidad.
+- [Readme so](https://readme.so/) - Agregar y personalizar rápidamente todas las secciones que necesita para el archivo README de su proyecto.
 
 ## Autores ✒️
 
