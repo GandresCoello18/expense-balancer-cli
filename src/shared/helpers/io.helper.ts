@@ -2,23 +2,37 @@ import * as readline from 'readline';
 
 import { log } from 'console-log-colors';
 
-import { validValueRegex } from '../utils/regex.util';
+import { calculateMinimumExchange } from '../../services/calculator.service';
+import { END_PROCESS } from '../utils/calculator.util';
+import { logResultsTable } from '../utils/log.util';
+import {
+  isValidMonetaryValue,
+  isValidRangeValueAllowed,
+  validateMaxMembersAllowed,
+} from '../utils/validate.util';
 
-import { isValidRangeValueAllowed, validateMaxMembersAllowed } from './calculator.helper';
+import { replaceLine } from './calculator.helper';
 
-import { calculateMinimumExchange } from '@/calculator';
+import { CalculatorModel } from '@/model/calculator.model';
 
-export const parseInput = (input: string): number[][] => {
+export const createInterfaceReadLine = () =>
+  readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+  });
+
+export const parseInputFile = (options: { input: string }) => {
+  const { input } = options;
   const lines = input.trim().split('\n');
-  const trips: number[][] = [];
-  let currentTrip: number[] = [];
+  const trips: CalculatorModel['trips'] = [];
+  let currentTrip: CalculatorModel['trip'] = [];
 
   for (const line of lines) {
     if (line === '>') {
       trips.push(currentTrip);
       currentTrip = [];
     } else if (line.startsWith('$')) {
-      const value = line.replace('$', '').replace(',', '.') || 'valor vacio';
+      const value = replaceLine(line) || 'valor vacio';
 
       if (!isValidMonetaryValue(value)) {
         log.red(`Error: se encontraron valores no admitidos -> ${value}`);
@@ -33,32 +47,8 @@ export const parseInput = (input: string): number[][] => {
   return trips;
 };
 
-export const logResultsTable = (results: string[]) => {
-  console.log(log.green('Resultados: 👇'));
-
-  const tableData = results.map((result, index) => ({
-    Viaje: `#${index + 1} ✈️ `,
-    Monto: `$${result} 💰`,
-  }));
-
-  console.table(tableData);
-};
-
-export const isValidMonetaryValue = (value: string) => {
-  if (validValueRegex.test(value)) return true;
-  if (isNaN(parseFloat(value))) return false;
-  return false;
-};
-
-export const createInterfaceReadLine = () =>
-  readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-  });
-
-const trips: number[][] = [];
-
-export const askNumberOfMembers = (options: { readlineIntf: readline.Interface }) => {
+const trips: CalculatorModel['trips'] = [];
+export const inputMemberCount = (options: Pick<CalculatorModel, 'readlineIntf'>) => {
   const { readlineIntf } = options;
 
   readlineIntf.question('Digite el número de miembros (0 para salir): ', input => {
@@ -67,35 +57,33 @@ export const askNumberOfMembers = (options: { readlineIntf: readline.Interface }
 
     if (!isValidMonetaryValue(valueLine)) {
       log.red(`⚠️  Entrada no válida. Ingresa un número. ⚠️   ->  ${valueLine}`);
-      askNumberOfMembers({ readlineIntf });
+      inputMemberCount({ readlineIntf });
     }
 
-    if (numberOfMembersLine === 0) {
+    if (numberOfMembersLine === END_PROCESS) {
       readlineIntf.close();
 
-      const results = calculateMinimumExchange(trips);
+      const results = calculateMinimumExchange({ trips });
       logResultsTable(results);
       return;
     }
 
     validateMaxMembersAllowed({ count: numberOfMembersLine });
-    askExpenses({ numberOfMembersLine, trips, readlineIntf });
+    inputMemberExpenses({ numberOfMembersLine, trips, readlineIntf });
   });
 };
 
-const askExpenses = (options: {
-  numberOfMembersLine: number;
-  trips: number[][];
-  readlineIntf: readline.Interface;
-}) => {
+const inputMemberExpenses = (
+  options: Pick<CalculatorModel, 'numberOfMembersLine' | 'trips' | 'readlineIntf'>,
+) => {
   const { numberOfMembersLine, trips, readlineIntf } = options;
-  const expenses: number[] = [];
+  const expenses: CalculatorModel['expenses'] = [];
 
-  const askNextExpense = () => {
+  const inputNextExpense = () => {
     if (expenses.length === numberOfMembersLine) {
       trips.push(expenses);
       log.gray(`✅ Viaje registrado: ${expenses.join(',')}`);
-      return askNumberOfMembers({ readlineIntf });
+      return inputMemberCount({ readlineIntf });
     }
 
     readlineIntf.question(`Gasto para el miembro #${expenses.length + 1}: `, input => {
@@ -103,13 +91,13 @@ const askExpenses = (options: {
 
       if (!isValidMonetaryValue(value.toString()) || !isValidRangeValueAllowed({ value })) {
         log.red('❌ El valor debe estar entre $0.00 y $1000.00');
-        return askNextExpense();
+        return inputNextExpense();
       }
 
       expenses.push(value);
-      askNextExpense();
+      inputNextExpense();
     });
   };
 
-  askNextExpense();
+  inputNextExpense();
 };

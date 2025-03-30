@@ -1,6 +1,6 @@
 import { log } from 'console-log-colors';
 
-import { readInputFromFile, readInputFromConsole } from './io';
+import { readInputFromFile, readInputFromConsole } from './services/io.service';
 
 function main() {
   if (process.argv.length > 2) {
