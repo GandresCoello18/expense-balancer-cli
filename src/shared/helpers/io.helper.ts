@@ -27,11 +27,13 @@ export const parseInputFile = (options: { input: string }) => {
   let currentTrip: CalculatorModel['trip'] = [];
 
   for (const line of lines) {
-    if (line === '>') {
+    const lineTrimed = line.trim();
+
+    if (lineTrimed === '>') {
       trips.push(currentTrip);
       currentTrip = [];
     } else if (line.startsWith('$')) {
-      const value = replaceLine(line) || 'valor vacio';
+      const value = replaceLine(lineTrimed) || 'valor vació';
 
       if (!isValidMonetaryValue(value)) {
         log.red(`Error: se encontraron valores no admitidos -> ${value}`);

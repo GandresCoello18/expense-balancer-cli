@@ -6,9 +6,9 @@ import { MAx_MEMBERS_ALLOWED_BY_TRIP, MAx_VALUE_ALLOWED_BY_MEMBER } from './calc
 import { validValueRegex } from './regex.util';
 
 export const isValidMonetaryValue = (value: string) => {
-  if (validValueRegex.test(value)) return true;
+  if (!validValueRegex.test(value)) return false;
   if (isNaN(parseFloat(value))) return false;
-  return false;
+  return true;
 };
 
 export const validateMaxMembersAllowed = (options: { count: number }) => {

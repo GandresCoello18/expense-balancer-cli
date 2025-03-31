@@ -26,13 +26,13 @@ describe('calculateMinimumExchange', () => {
     expect(calculateMinimumExchange({ trips })).toEqual(['11.99']);
   });
 
-  it("debe calcular el intercambio mínimo para un viaje grande", () => {
+  it('debe calcular el intercambio mínimo para un viaje grande', () => {
     const trips = [[100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]];
-    expect(calculateMinimumExchange({ trips })).toEqual(["1250.00"]);
+    expect(calculateMinimumExchange({ trips })).toEqual(['1250.00']);
   });
 
-  it("debe manejar un viaje con valores desiguales en un grupo grande", () => {
+  it('debe manejar un viaje con valores desiguales en un grupo grande', () => {
     const trips = [[50, 150, 250, 350, 450, 550, 650, 750, 850, 950]];
-    expect(calculateMinimumExchange({ trips })).toEqual(["1250.00"]);
+    expect(calculateMinimumExchange({ trips })).toEqual(['1250.00']);
   });
 });

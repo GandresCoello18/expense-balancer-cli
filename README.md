@@ -85,12 +85,12 @@ Pruebas unitarias y coverage
 
 ## ⚙️ Script de desarollo
 
-Formatear codigo
+Formatear código
 ```bash
   yarn format:fix
 ```
 
-Análisis y patrones de error en codigo
+Análisis y patrones de error en código
 ```bash
   yarn lint:fix
 ```
@@ -127,10 +127,15 @@ Luego, ingresa:
 ### 🔹 Usando un archivo de entrada
 
 Puedes usar dev para desarrollo o start para producción
-```bash
-  yarn dev o yarn start
-```
 
+```bash
+  yarn dev:file:example
+```
+o
+```bash
+  yarn start:file:example
+```
+o
 ```bash
   yarn start src/inputs/example.txt
 ```
