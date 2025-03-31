@@ -2,6 +2,7 @@ import * as readline from 'readline';
 
 import { log } from 'console-log-colors';
 
+import { CalculatorModel } from '../../model/calculator.model';
 import { calculateMinimumExchange } from '../../services/calculator.service';
 import { END_PROCESS } from '../utils/calculator.util';
 import { logResultsTable } from '../utils/log.util';
@@ -12,8 +13,6 @@ import {
 } from '../utils/validate.util';
 
 import { replaceLine } from './calculator.helper';
-
-import { CalculatorModel } from '@/model/calculator.model';
 
 export const createInterfaceReadLine = () =>
   readline.createInterface({
@@ -73,7 +72,7 @@ export const inputMemberCount = (options: Pick<CalculatorModel, 'readlineIntf'>)
   });
 };
 
-const inputMemberExpenses = (
+export const inputMemberExpenses = (
   options: Pick<CalculatorModel, 'numberOfMembersLine' | 'trips' | 'readlineIntf'>,
 ) => {
   const { numberOfMembersLine, trips, readlineIntf } = options;

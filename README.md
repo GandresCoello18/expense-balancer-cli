@@ -80,6 +80,9 @@ Pruebas unitarias y coverage
   yarn test:coverage
 ```
 
+### 📷 Ejemplo:
+![Test coverage](https://firebasestorage.googleapis.com/v0/b/meniuz.appspot.com/o/tinkin%2Fcoverage-test.png?alt=media)
+
 ## ⚙️ Script de desarollo
 
 Formatear codigo

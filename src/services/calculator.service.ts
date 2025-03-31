@@ -1,11 +1,10 @@
-import { calculateAverage } from '../shared/helpers/calculator.helper';
-import { CENTS_IN_DOLLAR } from '../shared/utils/coin.util';
-
-import { CalculatorModel } from '@/model/calculator.model';
 import {
   validateMaxMembersAllowed,
   validateRangeValueAllowedByTrip,
-} from '@/shared/utils/validate.util';
+} from '..//shared/utils/validate.util';
+import { CalculatorModel } from '../model/calculator.model';
+import { calculateAverage } from '../shared/helpers/calculator.helper';
+import { CENTS_IN_DOLLAR } from '../shared/utils/coin.util';
 
 export const calculateMinimumExchange = (options: Pick<CalculatorModel, 'trips'>) => {
   const { trips } = options;

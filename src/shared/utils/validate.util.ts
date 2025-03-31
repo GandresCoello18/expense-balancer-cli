@@ -1,9 +1,9 @@
 import { log } from 'console-log-colors';
 
+import { CalculatorModel } from '../../model/calculator.model';
+
 import { MAx_MEMBERS_ALLOWED_BY_TRIP, MAx_VALUE_ALLOWED_BY_MEMBER } from './calculator.util';
 import { validValueRegex } from './regex.util';
-
-import { CalculatorModel } from '@/model/calculator.model';
 
 export const isValidMonetaryValue = (value: string) => {
   if (validValueRegex.test(value)) return true;
