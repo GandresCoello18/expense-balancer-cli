@@ -1,0 +1,18 @@
+{
+    "cSpell.words": [
+        "starsponsor"
+    ],
+    "workbench.colorCustomizations": {
+    "commandCenter.border": "#e3e3e3",
+    "sash.hoverBorder": "#0c6cf4",
+    "statusBar.background": "#0c6cf4",
+    "statusBar.foreground": "#e3e3e3",
+    "statusBarItem.hoverBackground": "#0c6cf4",
+    "statusBarItem.remoteBackground": "#0c6cf4",
+    "statusBarItem.remoteForeground": "#e3e3e3",
+    "titleBar.activeBackground": "#0c6cf4",
+    "titleBar.activeForeground": "#e3e3e3",
+    "titleBar.inactiveBackground": "#0c6cf4",
+    "titleBar.inactiveForeground": "#e3e3e3"
+  },
+}
