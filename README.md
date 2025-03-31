@@ -4,7 +4,7 @@
 Este proyecto resuelve el problema de dividir equitativamente los gastos de viaje de los miembros de una banda de jazz/bachata en Ecuador. Utiliza **TypeScript** con **TDD** y sigue buenas prácticas de código.
 
 > [!NOTE]
-> Usar versiones de yarn y node estables para correr esta app, las versiones recomendadas se encuentran en la seccion de engines del package.json
+> Usar versiones de yarn y node estables para correr esta app, las versiones recomendadas se encuentran en la sección de engines del package.json
 
 ---
 
@@ -95,8 +95,15 @@ Análisis y patrones de error en codigo
   yarn lint:fix
 ```
 
-## 📌 Uso
-Puedes ingresar los datos de forma interactiva o desde un archivo de texto.
+## 📌 Ejecución
+Puedes ingresar los datos de forma interactiva o desde un archivo de texto, para hacerlo de forma manual se requiere responder una serie de preguntas para ordenar los datos a procesar.
+
+1) Digite el número de miembros
+2) Digite el gasto del miembro #.
+3) Se completa y se registra el viaje, vuelve a digitar el número de miembros o presiona 0 para terminar los datos de entrada.
+4) Muestra resultado por log en formato de tabla.
+
+Para usar el método de cálculo por medio de archivo de texto se requiere adjuntar el path o ruta del archivo con formato .txt seguido del script de ejecución, en caso de no ser encontrado dicho archivo, el programa emite un mensaje de alerta y termina la ejecución. Es importante tomar en cuenta el signo > dentro del archivo, ya que significa un salto de línea o un nuevo viaje para los miembros. En este repositorio se encuentra un archivo que puede ser usado en la ejecución del programa, dentro de la carpeta /inputs y a continuación se muestra ejemplos para ello.
 
 ### 🔹 Entrada de datos manual
 
