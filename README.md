@@ -1,5 +1,5 @@
 # 🎷 The Ecuadorian Big Big Band - Expense Splitter 💰
-![Logo](https://cdn.prod.website-files.com/63cad8453a048d41ee9ce6bb/63cad8453a048da4c09ce7f3_logo.svg)
+![Logo](https://andres-coello-goyes.vercel.app/me.jpeg)
 
 Este proyecto resuelve el problema de dividir equitativamente los gastos de viaje de los miembros de una banda de jazz/bachata en Ecuador. Utiliza **TypeScript** con **TDD** y sigue buenas prácticas de código.
 
@@ -39,8 +39,8 @@ Este proyecto resuelve el problema de dividir equitativamente los gastos de viaj
 ### 1️⃣ Clonar el repositorio  
 
 ```sh
-git clone https://github.com/GandresCoello18/back-challenge-tinkin.git
-cd back-challenge-tinkin
+git clone https://github.com/GandresCoello18/back-expense-splitter_ac.git
+cd back-expense-splitter_ac
 ```
 
 ### 2️⃣ Instalar dependencias
@@ -103,7 +103,7 @@ Puedes ingresar los datos de forma interactiva o desde un archivo de texto, para
 3) Se completa y se registra el viaje, vuelve a digitar el número de miembros o presiona 0 para terminar los datos de entrada.
 4) Muestra resultado por log en formato de tabla.
 
-Para usar el método de cálculo por medio de archivo de texto se requiere adjuntar el path o ruta del archivo con formato .txt seguido del script de ejecución, en caso de no ser encontrado dicho archivo, el programa emite un mensaje de alerta y termina la ejecución. Es importante tomar en cuenta el - [signo > dentro del archivo](https://github.com/GandresCoello18/back-challenge-tinkin/blob/master/src/inputs/example.txt), ya que significa un salto de línea o un nuevo viaje para los miembros. En este repositorio se encuentra un archivo que puede ser usado en la ejecución del programa, dentro de la carpeta /inputs y a continuación se muestra ejemplos para ello.
+Para usar el método de cálculo por medio de archivo de texto se requiere adjuntar el path o ruta del archivo con formato .txt seguido del script de ejecución, en caso de no ser encontrado dicho archivo, el programa emite un mensaje de alerta y termina la ejecución. Es importante tomar en cuenta el - [signo > dentro del archivo](https://github.com/GandresCoello18/back-expense-splitter_ac/blob/master/src/inputs/example.txt), ya que significa un salto de línea o un nuevo viaje para los miembros. En este repositorio se encuentra un archivo que puede ser usado en la ejecución del programa, dentro de la carpeta /inputs y a continuación se muestra ejemplos para ello.
 
 ### 🔹 Entrada de datos manual
 
