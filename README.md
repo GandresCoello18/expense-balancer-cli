@@ -1,5 +1,4 @@
 # 🎷 The Ecuadorian Big Big Band - Expense Splitter 💰
-![Logo](https://andres-coello-goyes.vercel.app/me.jpeg)
 
 Este proyecto resuelve el problema de dividir equitativamente los gastos de viaje de los miembros de una banda de jazz/bachata en Ecuador. Utiliza **TypeScript** con **TDD** y sigue buenas prácticas de código.
 
@@ -180,15 +179,22 @@ _Para el desarrollo de esta app se utilizo las siguientes herramientas._
 
 ## Autores ✒️
 
-- **Andrés Coello** - _Developer Full Stack_ - [Andres Coello](https://www.instagram.com/coellogoyes/)
+- **Andrés Coello Goyes** - _SOFTWARE ENGINEER_ - [Andres Coello](https://linktr.ee/gandrescoello)
 
 #### 🔗 Links
+
 [![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://andres-coello-goyes.vercel.app/)
-[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/andr%C3%A9s-roberto-coello-goyes/)
-[![twitter](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://x.com/AndresC79085858)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/andrescoellogoyes/)
+[![twitter](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://x.com/acoellogoyes)
 
 ## Expresiones de Gratitud 🎁
 
 - Pasate por mi perfil para ver algun otro proyecto 📢
 - Desarrollemos alguna app juntos, puedes escribirme en mis redes.
 - Muchas gracias por pasarte por este proyecto 🤓.
+
+---
+
+⌨️ con ❤️ por [Andres Coello Goyes](https://linktr.ee/gandrescoello) 😊
+
+<img width="400" height="400" alt="1764558900283" src="https://github.com/user-attachments/assets/cde88968-7856-49ec-bdb1-53a82bf9caa3" />
