@@ -1,197 +1,316 @@
 # 🎷 The Ecuadorian Big Big Band - Expense Splitter 💰
 
-Este proyecto resuelve el problema de dividir equitativamente los gastos de viaje de los miembros de una banda de jazz/bachata en Ecuador. Utiliza **TypeScript** con **TDD** y sigue buenas prácticas de código.
-
-> [!NOTE]
-> Usar versiones de yarn y node estables para correr esta app, las versiones recomendadas se encuentran en la sección de engines del package.json
+> **Calculadora de gastos compartidos** que divide equitativamente los gastos de viaje entre los miembros de un grupo.
 
 ---
 
-## 🚀 Características  
+## 📖 ¿Qué hace este programa?
 
-✅ Cálculo automático de la cantidad mínima de dinero que debe circular entre los miembros para igualar los gastos.  
-✅ Admite la entrada de datos desde la terminal o archivos de texto.  
-✅ Validaciones para evitar entradas incorrectas (máximo 100 miembros y $1000 por miembro).  
-✅ Código modular con una estructura organizada.  
-✅ Pruebas unitarias con **Jest**.  
-✅ Logs en formato de tabla para una mejor visualización de los resultados.  
+Cuando un grupo de personas realiza un viaje juntos, cada quien paga gastos diferentes. Este programa calcula **cuánto dinero debe moverse entre las personas** para que todos paguen exactamente lo mismo al final.
+
+### Ejemplo práctico:
+
+Imagina que 3 amigos van de viaje:
+- **Persona 1** gastó $100
+- **Persona 2** gastó $50  
+- **Persona 3** gastó $50
+
+El gasto total es $200, así que cada uno debería pagar $66.67.
+
+El programa calcula que:
+- La Persona 1 debe recibir $33.33 de las otras dos
+- Las Personas 2 y 3 deben pagar $16.67 cada una a la Persona 1
+
+**Resultado:** El programa muestra que se deben transferir **$33.33** en total para equilibrar los gastos.
 
 ---
 
-## 📂 Estructura del Proyecto  
+## 🚀 Características principales
 
-```sh
+✅ **Cálculo automático** - Calcula la cantidad mínima de dinero que debe circular entre miembros  
+✅ **Entrada flexible** - Acepta datos desde la terminal (interactivo) o archivos de texto  
+✅ **Validaciones** - Protege contra errores: máximo 100 miembros y $1000 por persona  
+✅ **Resultados claros** - Muestra los resultados en formato de tabla fácil de leer  
+✅ **Código robusto** - Arquitectura limpia con pruebas unitarias  
+
+---
+
+## 🏗️ Arquitectura del Proyecto
+
+El proyecto sigue una **arquitectura limpia** organizada en capas:
+
+```
 📦 src
-   ┣ 📂 __tests__ # Pruebas unitarias (TDD)
-   ┣ 📂 inputs # Archivos de prueba con datos de entrada
-   ┣ 📂 services # Funciones, controladores para logica de negocio.
-   ┣ 📂 model # Tipado y modelos de datos (TypeScript, type o interface)
-   ┣ 📂 shared
-     ┣ 📂 helpers # Funciones auxiliares reutilizables
-     ┣ 📂 utils # Funciones de utilidad genéricas
-   ┣ 📜 index.ts # Punto de entrada principal
+   ┣ 📂 domain              # Lógica de negocio pura (reglas del cálculo)
+   │   ├── calculator/      # Algoritmo de cálculo de gastos
+   │   └── types/           # Tipos y modelos de datos
+   │
+   ┣ 📂 application         # Casos de uso y servicios
+   │   ├── use-cases/       # Lógica de aplicación
+   │   └── services/        # Orquestación de casos de uso
+   │
+   ┣ 📂 infrastructure      # Comunicación con el exterior
+   │   ├── input/           # Lectura de datos (archivo/consola)
+   │   └── output/          # Presentación de resultados
+   │
+   ┣ 📂 shared              # Utilidades compartidas
+   │   ├── constants/       # Constantes del sistema
+   │   ├── errors/          # Clases de errores personalizadas
+   │   └── validation/      # Validadores reutilizables
+   │
+   ┣ 📂 __tests__           # Pruebas unitarias
+   ┣ 📂 inputs              # Archivos de ejemplo para pruebas
+   └ 📜 index.ts            # Punto de entrada principal
 ```
+
 ---
 
-## 📌 Iniciando
+## 📌 Inicio rápido
 
-### 1️⃣ Clonar el repositorio  
+### Prerrequisitos
 
-```sh
-git clone https://github.com/GandresCoello18/back-expense-splitter_ac.git
-cd back-expense-splitter_ac
-```
+- **Node.js** >= 20.19.0
+- **Yarn** >= 1.22.19
 
-### 2️⃣ Instalar dependencias
+### Instalación
+
+1. **Clonar el repositorio**
+   ```bash
+   git clone https://github.com/GandresCoello18/back-expense-splitter_ac.git
+   cd back-expense-splitter_ac
+   ```
+
+2. **Instalar dependencias**
+   ```bash
+   yarn install
+   ```
+
+3. **Ejecutar en desarrollo**
+   ```bash
+   yarn dev
+   ```
+
+4. **Compilar para producción**
+   ```bash
+   yarn build
+   yarn start
+   ```
+
+---
+
+## 💻 Uso del programa
+
+El programa puede recibir datos de **dos formas**:
+
+### 🔹 Opción 1: Entrada manual (interactiva)
+
+Ideal para ingresar datos directamente desde la terminal.
 
 ```bash
-  yarn install
+yarn dev
+# o
+yarn start
 ```
 
-### 3️⃣ Ejecutar en modo desarrollo
+**Pasos:**
+1. Ingresa el número de miembros del primer viaje
+2. Ingresa el gasto de cada miembro (uno por uno)
+3. Repite para más viajes o ingresa `0` para terminar
+4. El programa mostrará los resultados en una tabla
 
+**Ejemplo de interacción:**
 ```bash
-  yarn dev
+Digite el número de miembros (0 para salir): 3
+Gasto para el miembro #1: 100.01
+Gasto para el miembro #2: 99.99
+Gasto para el miembro #3: 99.99
+✅ Viaje registrado: 100.01,99.99,99.99
+Digite el número de miembros (0 para salir): 0
+
+📊 Resultados: 👇
+┌─────────┬─────────┬─────────────┐
+│ (index) │ Viaje   │ Monto       │
+├─────────┼─────────┼─────────────┤
+│ 0       │ '#1 ✈️ ' │ '$0.00 💰'  │
+└─────────┴─────────┴─────────────┘
 ```
 
-### 4️⃣ Compilar para producción
+### 🔹 Opción 2: Entrada por archivo
 
+Ideal para procesar múltiples viajes a la vez usando un archivo de texto.
+
+**Formato del archivo:**
+- Cada línea con `$` seguido del gasto (ej: `$100.50`)
+- Usa `>` para separar viajes diferentes
+- Acepta comas o puntos como separador decimal
+
+**Ejemplo de archivo (`src/inputs/example.txt`):**
+```
+$10,00
+$20,00
+$30,00
+>
+$15,00
+$15,01
+$3,00
+$3,01
+```
+
+**Ejecutar:**
 ```bash
-  yarn build
+# Con el archivo de ejemplo
+yarn dev:file:example
+# o
+yarn start:file:example
+
+# Con tu propio archivo
+yarn dev src/inputs/mi-archivo.txt
+# o
+yarn start src/inputs/mi-archivo.txt
 ```
 
-### 5️⃣ Ejecutar en producción
-
-```bash
-  yarn start
-```
+---
 
 ## 🧪 Pruebas
-Ejecutar las pruebas con Jest:
 
-Pruebas unitarias
-```bash
-  yarn test:unit
-```
-
-Pruebas unitarias y coverage
-```bash
-  yarn test:coverage
-```
-
-### 📷 Ejemplo:
-![Test coverage](https://firebasestorage.googleapis.com/v0/b/meniuz.appspot.com/o/tinkin%2Fcoverage-test.png?alt=media)
-
-## ⚙️ Script de desarollo
-
-Formatear código
-```bash
-  yarn format:fix
-```
-
-Análisis y patrones de error en código
-```bash
-  yarn lint:fix
-```
-
-## 📌 Ejecución
-Puedes ingresar los datos de forma interactiva o desde un archivo de texto, para hacerlo de forma manual se requiere responder una serie de preguntas para ordenar los datos a procesar.
-
-1) Digite el número de miembros
-2) Digite el gasto del miembro #.
-3) Se completa y se registra el viaje, vuelve a digitar el número de miembros o presiona 0 para terminar los datos de entrada.
-4) Muestra resultado por log en formato de tabla.
-
-Para usar el método de cálculo por medio de archivo de texto se requiere adjuntar el path o ruta del archivo con formato .txt seguido del script de ejecución, en caso de no ser encontrado dicho archivo, el programa emite un mensaje de alerta y termina la ejecución. Es importante tomar en cuenta el - [signo > dentro del archivo](https://github.com/GandresCoello18/back-expense-splitter_ac/blob/master/src/inputs/example.txt), ya que significa un salto de línea o un nuevo viaje para los miembros. En este repositorio se encuentra un archivo que puede ser usado en la ejecución del programa, dentro de la carpeta /inputs y a continuación se muestra ejemplos para ello.
-
-### 🔹 Entrada de datos manual
-
-Puedes usar dev para desarrollo o start para producción
-```bash
-  yarn dev o yarn start
-```
-
-Luego, ingresa:
-```bash
-  3
-  100.01
-  99.99
-  99.99
-  0
-```
-
-### 📷 Ejemplo:
-![Proceso manual](https://firebasestorage.googleapis.com/v0/b/meniuz.appspot.com/o/tinkin%2Fmanual.png?alt=media)
-
-### 🔹 Usando un archivo de entrada
-
-Puedes usar dev para desarrollo o start para producción
+El proyecto incluye pruebas unitarias completas usando **Jest**.
 
 ```bash
-  yarn dev:file:example
-```
-o
-```bash
-  yarn start:file:example
-```
-o
-```bash
-  yarn start src/inputs/example.txt
-```
+# Ejecutar todas las pruebas
+yarn test:unit
 
-### 📷 Ejemplo:
-![Proceso por archivo](https://firebasestorage.googleapis.com/v0/b/meniuz.appspot.com/o/tinkin%2Fautomati.png?alt=media)
+# Ejecutar pruebas en modo watch (desarrollo)
+yarn test:watch
 
-### 🔒 Validaciones Implementadas
-
-```bash
-✔️ Máximo 100 miembros por viaje.
-✔️ Gasto máximo de $1000 por persona.
-✔️ Se buscan valores incorrectos (ej. "$99y.66").
-✔️ La cantidad de miembros debe especificarse antes de los gastos.
-✔️ Se finaliza la entrada de datos al ingresar 0.
+# Ejecutar pruebas con cobertura de código
+yarn test:coverage
 ```
 
-### 📌 Ejemplo de Salida
+**Cobertura actual:** El proyecto mantiene una alta cobertura de pruebas para garantizar la calidad del código.
+
+---
+
+## ⚙️ Scripts de desarrollo
 
 ```bash
-📊 Resultados:  
------------------------------
-✈️  Viaje #1: $10.00 💰  
-✈️  Viaje #2: $11.99 💰  
-✈️  Viaje #3: $11.99 💰  
-✈️  Viaje #4: $0.07 💰  
-✈️  Viaje #5: $0.00 💰  
------------------------------
+# Formatear código automáticamente
+yarn format:fix
+
+# Verificar formato sin cambios
+yarn format:check
+
+# Corregir problemas de linting
+yarn lint:fix
+
+# Limpiar archivos compilados
+yarn clean
+
+# Compilar TypeScript
+yarn build
 ```
 
-## Construido con 🛠️
+---
 
-_Para el desarrollo de esta app se utilizo las siguientes herramientas._
+## 🔒 Validaciones implementadas
 
-- [Node.js](https://nodejs.org/en) - Entorno en tiempo de ejecución multiplataforma, de código abierto, para la capa del servidor basado en el lenguaje de programación JavaScript, asíncrono.
-- [TypeScript](https://www.typescriptlang.org/) - Lenguaje de programación libre y de código abierto desarrollado y mantenido por Microsoft.
-- [Prettier](https://prettier.io/) - Prettier es un formateador de código con soporte para js, ts, etc.
-- [ESLint](https://eslint.org/) - Herramienta de análisis de código estático para identificar patrones problemáticos que se encuentran en el código JavaScript.
-- [commitlint](https://commitlint.js.org/) - Ayuda a su equipo a adherirse a una convención de confirmación.
-- [Jest](https://jestjs.io/) - Jest es un encantador marco de pruebas de JavaScript centrado en la simplicidad.
-- [Readme so](https://readme.so/) - Agregar y personalizar rápidamente todas las secciones que necesita para el archivo README de su proyecto.
+El programa incluye las siguientes validaciones para garantizar datos correctos:
 
-## Autores ✒️
+| Validación | Descripción |
+|------------|-------------|
+| **Máximo de miembros** | Hasta 100 miembros por viaje |
+| **Límite de gasto** | Máximo $1000 por persona |
+| **Formato numérico** | Valores deben ser números válidos (rechaza "abc", "$99y.66", etc.) |
+| **Orden de entrada** | Primero número de miembros, luego gastos |
+| **Finalización** | Ingresa `0` para terminar la entrada de datos |
 
-- **Andrés Coello Goyes** - _SOFTWARE ENGINEER_ - [Andres Coello](https://linktr.ee/gandrescoello)
+---
 
-#### 🔗 Links
+## 📊 Ejemplo de salida
+
+Cuando ejecutas el programa, verás resultados como estos:
+
+```
+📊 Resultados: 👇
+┌─────────┬─────────┬─────────────┐
+│ (index) │ Viaje   │ Monto       │
+├─────────┼─────────┼─────────────┤
+│ 0       │ '#1 ✈️ ' │ '$10.00 💰' │
+│ 1       │ '#2 ✈️ ' │ '$11.99 💰' │
+│ 2       │ '#3 ✈️ ' │ '$11.99 💰' │
+│ 3       │ '#4 ✈️ ' │ '$0.07 💰'  │
+│ 4       │ '#5 ✈️ ' │ '$0.00 💰'  │
+└─────────┴─────────┴─────────────┘
+```
+
+Cada fila muestra:
+- **Viaje**: Número del viaje procesado
+- **Monto**: Cantidad mínima de dinero que debe circular para equilibrar los gastos
+
+---
+
+## 🛠️ Tecnologías utilizadas
+
+| Tecnología | Propósito |
+|------------|-----------|
+| [Node.js](https://nodejs.org/) | Entorno de ejecución JavaScript |
+| [TypeScript](https://www.typescriptlang.org/) | Lenguaje de programación con tipado estático |
+| [Jest](https://jestjs.io/) | Framework de pruebas unitarias |
+| [ESLint](https://eslint.org/) | Linter para mantener calidad de código |
+| [Prettier](https://prettier.io/) | Formateador de código automático |
+| [commitlint](https://commitlint.js.org/) | Validación de mensajes de commit |
+
+---
+
+## 📝 Conceptos técnicos (para desarrolladores)
+
+### Algoritmo de cálculo
+
+El programa utiliza el siguiente algoritmo:
+
+1. **Conversión a centavos**: Todos los valores se convierten a centavos para evitar errores de punto flotante
+2. **Cálculo del promedio**: Se calcula cuánto debería pagar cada persona (total ÷ número de personas)
+3. **Diferencias**: Se calcula la diferencia entre lo que pagó cada uno y el promedio
+4. **Intercambio mínimo**: Se suma la diferencia positiva y negativa, el mínimo entre ambos es el resultado
+
+### Arquitectura
+
+- **Domain Layer**: Contiene la lógica de negocio pura, sin dependencias externas
+- **Application Layer**: Orquesta los casos de uso y coordina el dominio con la infraestructura
+- **Infrastructure Layer**: Maneja I/O (archivos, consola) y detalles de implementación
+- **Shared Layer**: Utilidades y constantes compartidas
+
+### Manejo de errores
+
+El proyecto utiliza clases de error personalizadas:
+- `ValidationError`: Errores de validación de entrada
+- `FileReadError`: Errores al leer archivos
+- `FileParseError`: Errores al parsear el contenido de archivos
+
+---
+
+## 👤 Autor
+
+**Andrés Coello Goyes** - SOFTWARE ENGINEER
+
+#### 🔗 Enlaces
 
 [![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://andres-coello-goyes.vercel.app/)
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/andrescoellogoyes/)
 [![twitter](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://x.com/acoellogoyes)
 
-## Expresiones de Gratitud 🎁
+---
 
-- Pasate por mi perfil para ver algun otro proyecto 📢
-- Desarrollemos alguna app juntos, puedes escribirme en mis redes.
-- Muchas gracias por pasarte por este proyecto 🤓.
+## 📄 Licencia
+
+Este proyecto está bajo la Licencia ISC.
+
+---
+
+## 🎁 Agradecimientos
+
+- Gracias por revisar este proyecto 📢
+- ¿Tienes ideas para mejorar? ¡Escríbeme!
+- Si te fue útil, considera darle una ⭐ al repositorio
 
 ---
 
