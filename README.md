@@ -169,6 +169,9 @@ yarn dev src/inputs/mi-archivo.txt
 yarn start src/inputs/mi-archivo.txt
 ```
 
+### 📷 Ejemplo:
+![Proceso manual](https://firebasestorage.googleapis.com/v0/b/meniuz.appspot.com/o/tinkin%2Fmanual.png?alt=media)
+
 ---
 
 ## 🧪 Pruebas
@@ -185,6 +188,9 @@ yarn test:watch
 # Ejecutar pruebas con cobertura de código
 yarn test:coverage
 ```
+
+### 📷 Ejemplo:
+![Test coverage](https://firebasestorage.googleapis.com/v0/b/meniuz.appspot.com/o/tinkin%2Fcoverage-test.png?alt=media)
 
 **Cobertura actual:** El proyecto mantiene una alta cobertura de pruebas para garantizar la calidad del código.
 
